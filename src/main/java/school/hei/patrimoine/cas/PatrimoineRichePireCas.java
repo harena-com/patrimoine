@@ -73,6 +73,6 @@ public class PatrimoineRichePireCas implements Supplier<Patrimoine> {
         "Cresus (pire)",
         ilo,
         au13mai24,
-        Set.of(compteCourant, compteEpargne, trainDeVie, voiture, mac));
+        Set.of(compteCourant, compteEpargne, trainDeVie, voiture, salaire, mac, transfertVersEpargne));
   }
 }
