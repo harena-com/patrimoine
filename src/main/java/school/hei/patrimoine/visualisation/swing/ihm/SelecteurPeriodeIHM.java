@@ -17,12 +17,11 @@ import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-import school.hei.patrimoine.modele.EvolutionPatrimoine;
 import school.hei.patrimoine.visualisation.swing.ihm.jdatepicker.DateFormatter;
 import school.hei.patrimoine.visualisation.swing.modele.PatrimoinesVisualisables;
 
 public class SelecteurPeriodeIHM extends JPanel implements Observer {
-  private final PatrimoinesVisualisables patrimoinesVisualisables;
+  private final transient PatrimoinesVisualisables patrimoinesVisualisables;
 
   public SelecteurPeriodeIHM(PatrimoinesVisualisables patrimoinesVisualisables) {
     super(new FlowLayout(LEFT));
@@ -54,10 +53,6 @@ public class SelecteurPeriodeIHM extends JPanel implements Observer {
                     patrimoinesVisualisables.setFinEvolution(
                         // note(fresh-evolution-in-lambda)
                         toLocalDate(e)))));
-  }
-
-  private EvolutionPatrimoine evolutionPatrimoine() {
-    return patrimoinesVisualisables.getEvolutionPatrimoine();
   }
 
   private LocalDate toLocalDate(ActionEvent e) {
