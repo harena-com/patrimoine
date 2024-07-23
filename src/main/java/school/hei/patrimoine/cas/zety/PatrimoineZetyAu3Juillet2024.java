@@ -30,6 +30,9 @@ public class PatrimoineZetyAu3Juillet2024 implements Supplier<Patrimoine> {
   public static final LocalDate AU_18_SEPTEMBRE_2025 = LocalDate.of(2025, SEPTEMBER, 18);
   public static final LocalDate AU_26_OCTOBRE_2025 = LocalDate.of(2025, OCTOBER, 26);
   public static final LocalDate AU_15_FEVRIER_2025 = LocalDate.of(2024, FEBRUARY, 15);
+  public static final String POSSESSIONS_DU_3_JUILLET = "possessions du 3 Juillet";
+  public static final String POSSESSIONS_AJOUTEES_LE_18_SEPTEMBRE_2024 = "possessions ajoutées le 18 Septembre 2024";
+  public static final String POSSESSIONS_AJOUTEES_APRES_LE_18_SEPTEMBRE = "possessions ajoutées après le 18 Septembre";
 
   private Argent compteBancaire() {
     return new Argent("compte bancaire argent", AU_3_JUILLET_2024, 100_000, MGA);
@@ -163,13 +166,13 @@ public class PatrimoineZetyAu3Juillet2024 implements Supplier<Patrimoine> {
     var compteBancaire = compteBancaire();
     GroupePossession possessionsDu3Juillet =
         new GroupePossession(
-            "possessions du 3 Juillet",
+            POSSESSIONS_DU_3_JUILLET,
             AU_3_JUILLET_2024,
             possessionsDu3Juillet2024(ordinateur, vêtements, espèces, compteBancaire),
             MGA);
     GroupePossession possessionsRajoutéesLe18Septembre =
         new GroupePossession(
-            "possessions ajoutées le 18 Septembre 2024",
+            POSSESSIONS_AJOUTEES_LE_18_SEPTEMBRE_2024,
             AU_18_SEPTEMBRE_2024,
             possessionsRajoutéesLe18Septembre2024(compteBancaire),
             MGA);
@@ -190,17 +193,17 @@ public class PatrimoineZetyAu3Juillet2024 implements Supplier<Patrimoine> {
     var espèces = espèces();
     var compteBancaire = compteBancaire();
     new GroupePossession(
-        "possessions du 3 Juillet",
+        POSSESSIONS_DU_3_JUILLET,
         AU_3_JUILLET_2024,
         possessionsDu3Juillet2024(ordinateur, vêtements, espèces, compteBancaire),
         MGA);
     new GroupePossession(
-        "possessions ajoutées le 18 Septembre 2024",
+        POSSESSIONS_AJOUTEES_LE_18_SEPTEMBRE_2024,
         AU_18_SEPTEMBRE_2024,
         possessionsRajoutéesLe18Septembre2024(compteBancaire),
         MGA);
     new GroupePossession(
-        "possessions ajoutées après le 18 Septembre",
+        POSSESSIONS_AJOUTEES_APRES_LE_18_SEPTEMBRE,
         AU_18_SEPTEMBRE_2024,
         possessionsRajoutéesAprèsLe18Septembre2024(espèces, compteBancaire),
         MGA);
@@ -216,19 +219,19 @@ public class PatrimoineZetyAu3Juillet2024 implements Supplier<Patrimoine> {
     var compteBancaire = compteBancaire();
     GroupePossession possessionsDu3Juillet2024 =
         new GroupePossession(
-            "possessions du 3 Juillet",
+            POSSESSIONS_DU_3_JUILLET,
             AU_3_JUILLET_2024,
             possessionsDu3Juillet2024(ordinateur, vêtements, espèces, compteBancaire),
             MGA);
     GroupePossession possessionsRajoutéesLe18Septembre2024 =
         new GroupePossession(
-            "possessions ajoutées le 18 Septembre 2024",
+            POSSESSIONS_AJOUTEES_LE_18_SEPTEMBRE_2024,
             AU_18_SEPTEMBRE_2024,
             possessionsRajoutéesLe18Septembre2024(compteBancaire),
             MGA);
     GroupePossession possessionsRajoutéesAprèsLe18Septembre2024 =
         new GroupePossession(
-            "possessions ajoutées après le 18 Septembre",
+            POSSESSIONS_AJOUTEES_APRES_LE_18_SEPTEMBRE,
             AU_18_SEPTEMBRE_2024,
             possessionsRajoutéesAprèsLe18Septembre2024(espèces, compteBancaire),
             MGA);
@@ -253,19 +256,19 @@ public class PatrimoineZetyAu3Juillet2024 implements Supplier<Patrimoine> {
     // possessions en Ariary
     GroupePossession possessionsDu3Juillet2024 =
         new GroupePossession(
-            "possessions du 3 Juillet",
+            POSSESSIONS_DU_3_JUILLET,
             AU_3_JUILLET_2024,
             possessionsDu3Juillet2024(ordinateur, vêtements, espèces, compteBancaire),
             MGA);
     GroupePossession possessionsRajoutéesLe18Septembre2024 =
         new GroupePossession(
-            "possessions ajoutées le 18 Septembre 2024",
+            POSSESSIONS_AJOUTEES_LE_18_SEPTEMBRE_2024,
             AU_18_SEPTEMBRE_2024,
             possessionsRajoutéesLe18Septembre2024(compteBancaire),
             MGA);
     GroupePossession possessionsRajoutéesAprèsLe18Septembre2024 =
         new GroupePossession(
-            "possessions ajoutées après le 18 Septembre",
+            POSSESSIONS_AJOUTEES_APRES_LE_18_SEPTEMBRE,
             AU_18_SEPTEMBRE_2024,
             possessionsRajoutéesAprèsLe18Septembre2024(espèces, compteBancaire),
             MGA);
