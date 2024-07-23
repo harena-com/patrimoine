@@ -7,11 +7,11 @@ import javax.swing.*;
 
 public class DateFormatter extends JFormattedTextField.AbstractFormatter {
 
-  private final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+  private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
   @Override
   public Object stringToValue(String text) throws ParseException {
-    return dateFormatter.parseObject(text);
+    return dateFormat.parseObject(text);
   }
 
   @Override
@@ -20,6 +20,6 @@ public class DateFormatter extends JFormattedTextField.AbstractFormatter {
       return "";
     }
     Calendar cal = (Calendar) value;
-    return dateFormatter.format(cal.getTime());
+    return dateFormat.format(cal.getTime());
   }
 }
