@@ -19,11 +19,14 @@ import lombok.SneakyThrows;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.style.theme.MatlabTheme;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import school.hei.patrimoine.modele.EvolutionPatrimoine;
 
 public class GrapheurEvolutionPatrimoine implements Function<EvolutionPatrimoine, File> {
 
   private static final int DPI = 300;
+  private static final Logger logger = LoggerFactory.getLogger(GrapheurEvolutionPatrimoine.class);
 
   private static void configureSeries(EvolutionPatrimoine evolutionPatrimoine, XYChart chart) {
     var dates = evolutionPatrimoine.dates().toList();
@@ -59,7 +62,7 @@ public class GrapheurEvolutionPatrimoine implements Function<EvolutionPatrimoine
 
     var temp = createTempFile(randomUUID().toString(), ".png").toFile();
     saveBitmapWithDPI(chart, temp.getAbsolutePath(), PNG, DPI);
-    System.out.println("Image générée: " + temp.getAbsolutePath());
+    logger.info("Image générée: {}", temp.getAbsolutePath());
 
     return temp;
   }
