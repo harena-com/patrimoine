@@ -58,7 +58,7 @@ public class EvolutionPatrimoine {
                                     f -> f.getDebut().isBefore(date) || f.getDebut().isEqual(date))
                                 .filter(f -> f.getFin().isAfter(date) || f.getFin().isEqual(date))
                                 .collect(toSet());
-                        if (!fluxImpossibles.isEmpty()) {
+                        if (!fluxImpossiblesJournaliers.isEmpty()) {
                           result.add(
                               new FluxImpossibles(
                                   date,
