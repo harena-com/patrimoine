@@ -10,8 +10,8 @@ import school.hei.patrimoine.visualisation.swing.modele.PatrimoinesVisualisables
 import school.hei.patrimoine.visualisation.xchart.GrapheurEvolutionPatrimoine;
 
 public class GrapheurEvolutionPatrimoineIHM extends JPanel implements Observer {
-  private final GrapheurEvolutionPatrimoine grapheurEvolutionPatrimoine;
-  private final PatrimoinesVisualisables patrimoinesVisualisables;
+  private final transient GrapheurEvolutionPatrimoine grapheurEvolutionPatrimoine;
+  private final transient PatrimoinesVisualisables patrimoinesVisualisables;
 
   public GrapheurEvolutionPatrimoineIHM(PatrimoinesVisualisables patrimoinesVisualisables) {
     super();

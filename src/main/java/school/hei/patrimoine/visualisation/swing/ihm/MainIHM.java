@@ -17,7 +17,7 @@ import school.hei.patrimoine.modele.Patrimoine;
 import school.hei.patrimoine.visualisation.swing.modele.PatrimoinesVisualisables;
 
 public class MainIHM extends JFrame implements Observer {
-  @Getter private final PatrimoinesVisualisables patrimoinesVisualisables;
+  @Getter private final transient PatrimoinesVisualisables patrimoinesVisualisables;
   private final SelecteurPatrimoineIHM selecteurPatrimoineIHM;
   private final SelecteurPeriodeIHM selecteurPeriodeIHM;
   private final OperationsImpossiblesIHM operationsImpossiblesIHM;

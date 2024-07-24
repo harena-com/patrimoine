@@ -9,7 +9,7 @@ import javax.swing.*;
 import school.hei.patrimoine.visualisation.swing.modele.PatrimoinesVisualisables;
 
 public class OperationsImpossiblesIHM extends JPanel implements Observer {
-  private final PatrimoinesVisualisables patrimoinesVisualisables;
+  private final transient PatrimoinesVisualisables patrimoinesVisualisables;
   private final JTextPane operationsImpossiblesTextPane;
 
   public OperationsImpossiblesIHM(PatrimoinesVisualisables patrimoinesVisualisables) {

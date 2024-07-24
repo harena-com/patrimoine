@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import school.hei.patrimoine.modele.possession.Argent;
 import school.hei.patrimoine.modele.possession.FluxArgent;
 import school.hei.patrimoine.modele.possession.GroupePossession;
+import school.hei.patrimoine.modele.possession.Possession;
 
 class PatrimoineTest {
 
@@ -116,17 +117,13 @@ class PatrimoineTest {
             -100_000,
             15);
 
+    var groupe1 = new GroupePossession("Le groupe", au13mai24, Set.of(financeur, trainDeVie));
+    var groupe2 =
+        new GroupePossession("un autre groupe", au13mai24, Set.of(financeur, trainDeVie), MGA);
+    Set<Possession> possessions = Set.of(groupe1, groupe2);
+
     assertThrows(
         IllegalArgumentException.class,
-        () -> {
-          new Patrimoine(
-              "patrimoineIloAu13mai24",
-              ilo,
-              au13mai24,
-              Set.of(
-                  new GroupePossession("Le groupe", au13mai24, Set.of(financeur, trainDeVie)),
-                  new GroupePossession(
-                      "un autre groupe", au13mai24, Set.of(financeur, trainDeVie), MGA)));
-        });
+        () -> new Patrimoine("patrimoineIloAu13mai24", ilo, au13mai24, possessions));
   }
 }

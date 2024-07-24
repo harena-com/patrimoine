@@ -29,28 +29,29 @@ public class EvolutionPatrimoine {
   private final Map<LocalDate, Patrimoine> evolutionJournaliere;
   private final Set<FluxImpossibles> fluxImpossibles;
 
-  public EvolutionPatrimoine(String nom, Patrimoine patrimoine, LocalDate debut, LocalDate fin) {
+  public EvolutionPatrimoine(
+      String nom, Patrimoine patrimoineInitial, LocalDate debut, LocalDate fin) {
     this.nom = nom;
-    this.patrimoine = patrimoine;
+    this.patrimoine = patrimoineInitial;
     this.debut = debut;
     this.fin = fin;
-    this.evolutionJournaliere = evolutionJournaliere();
-    this.fluxImpossibles = fluxImpossibles();
+    this.evolutionJournaliere = calculateEvolutionJournaliere();
+    this.fluxImpossibles = calculateFluxImpossibles();
     log.info("FLUX IMPOSSIBLES: {} --> {}\n{}\n\n", debut, fin, fluxImpossiblesStr());
   }
 
-  private Set<FluxImpossibles> fluxImpossibles() {
-    var res = new HashSet<FluxImpossibles>();
+  private Set<FluxImpossibles> calculateFluxImpossibles() {
+    var result = new HashSet<FluxImpossibles>();
     evolutionJournaliere.forEach(
-        (date, patrimoine) ->
-            patrimoine
+        (date, patrimoineJournalier) ->
+            patrimoineJournalier
                 .possessions()
                 .forEach(
                     p -> {
                       if (p instanceof Argent argent
                           && !(p instanceof Dette)
                           && p.getValeurComptable() < 0) {
-                        var fluxImpossibles =
+                        var fluxImpossiblesJournaliers =
                             argent.getFluxArgents().stream()
                                 .filter(f -> f.getDateOperation() == date.getDayOfMonth())
                                 .filter(
@@ -58,16 +59,16 @@ public class EvolutionPatrimoine {
                                 .filter(f -> f.getFin().isAfter(date) || f.getFin().isEqual(date))
                                 .collect(toSet());
                         if (!fluxImpossibles.isEmpty()) {
-                          res.add(
+                          result.add(
                               new FluxImpossibles(
                                   date,
                                   argent.getNom(),
                                   argent.getValeurComptable(),
-                                  fluxImpossibles));
+                                  fluxImpossiblesJournaliers));
                         }
                       }
                     }));
-    return res;
+    return result;
   }
 
   public String fluxImpossiblesStr() {
@@ -77,10 +78,11 @@ public class EvolutionPatrimoine {
         .collect(joining("\n\n"));
   }
 
-  private Map<LocalDate, Patrimoine> evolutionJournaliere() {
-    Map<LocalDate, Patrimoine> evolutionJournaliere = new HashMap<>();
-    dates().forEach(date -> evolutionJournaliere.put(date, patrimoine.projectionFuture(date)));
-    return evolutionJournaliere;
+  private Map<LocalDate, Patrimoine> calculateEvolutionJournaliere() {
+    Map<LocalDate, Patrimoine> evolutionJournaliereCalculee = new HashMap<>();
+    dates()
+        .forEach(date -> evolutionJournaliereCalculee.put(date, patrimoine.projectionFuture(date)));
+    return evolutionJournaliereCalculee;
   }
 
   public Map<Possession, List<Integer>> serieValeursComptablesParPossession() {

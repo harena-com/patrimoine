@@ -7,7 +7,7 @@ import javax.swing.*;
 import school.hei.patrimoine.visualisation.swing.modele.PatrimoinesVisualisables;
 
 public class SelecteurPatrimoineIHM extends JPanel {
-  private final PatrimoinesVisualisables patrimoinesVisualisables;
+  private final transient PatrimoinesVisualisables patrimoinesVisualisables;
 
   public SelecteurPatrimoineIHM(PatrimoinesVisualisables patrimoinesVisualisables) {
     super(new FlowLayout(LEFT));
@@ -19,7 +19,7 @@ public class SelecteurPatrimoineIHM extends JPanel {
     this.add(description);
 
     String[] nomsPatrimoines = patrimoinesVisualisables.noms().toArray(new String[0]);
-    var selecteur = new JComboBox(nomsPatrimoines);
+    var selecteur = new JComboBox<String>(nomsPatrimoines);
     selecteur.setSelectedIndex(0);
     selecteur.addActionListener(
         e ->

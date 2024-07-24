@@ -26,7 +26,7 @@ public abstract sealed class Possession implements Serializable /*note(no-serial
   protected final int valeurComptable;
   protected final Devise devise;
 
-  public Possession(String nom, LocalDate t, int valeurComptable) {
+  protected Possession(String nom, LocalDate t, int valeurComptable) {
     this.nom = nom;
     this.t = t;
     this.valeurComptable = valeurComptable;
