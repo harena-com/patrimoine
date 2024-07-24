@@ -29,7 +29,8 @@ public class EvolutionPatrimoine {
   private final Map<LocalDate, Patrimoine> evolutionJournaliere;
   private final Set<FluxImpossibles> fluxImpossibles;
 
-  public EvolutionPatrimoine(String nom, Patrimoine patrimoineInitial, LocalDate debut, LocalDate fin) {
+  public EvolutionPatrimoine(
+      String nom, Patrimoine patrimoineInitial, LocalDate debut, LocalDate fin) {
     this.nom = nom;
     this.patrimoine = patrimoineInitial;
     this.debut = debut;
@@ -43,7 +44,7 @@ public class EvolutionPatrimoine {
     var result = new HashSet<FluxImpossibles>();
     evolutionJournaliere.forEach(
         (date, patrimoineJournalier) ->
-                patrimoineJournalier
+            patrimoineJournalier
                 .possessions()
                 .forEach(
                     p -> {
@@ -63,7 +64,7 @@ public class EvolutionPatrimoine {
                                   date,
                                   argent.getNom(),
                                   argent.getValeurComptable(),
-                                      fluxImpossiblesJournaliers));
+                                  fluxImpossiblesJournaliers));
                         }
                       }
                     }));
@@ -79,7 +80,8 @@ public class EvolutionPatrimoine {
 
   private Map<LocalDate, Patrimoine> calculateEvolutionJournaliere() {
     Map<LocalDate, Patrimoine> evolutionJournaliereCalculee = new HashMap<>();
-    dates().forEach(date -> evolutionJournaliereCalculee.put(date, patrimoine.projectionFuture(date)));
+    dates()
+        .forEach(date -> evolutionJournaliereCalculee.put(date, patrimoine.projectionFuture(date)));
     return evolutionJournaliereCalculee;
   }
 

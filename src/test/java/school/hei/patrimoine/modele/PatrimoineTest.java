@@ -118,12 +118,12 @@ class PatrimoineTest {
             15);
 
     var groupe1 = new GroupePossession("Le groupe", au13mai24, Set.of(financeur, trainDeVie));
-    var groupe2 = new GroupePossession("un autre groupe", au13mai24, Set.of(financeur, trainDeVie), MGA);
+    var groupe2 =
+        new GroupePossession("un autre groupe", au13mai24, Set.of(financeur, trainDeVie), MGA);
     Set<Possession> possessions = Set.of(groupe1, groupe2);
 
     assertThrows(
-            IllegalArgumentException.class,
-            () -> new Patrimoine("patrimoineIloAu13mai24", ilo, au13mai24, possessions)
-    );
+        IllegalArgumentException.class,
+        () -> new Patrimoine("patrimoineIloAu13mai24", ilo, au13mai24, possessions));
   }
 }
