@@ -65,9 +65,22 @@ public final class FluxArgent extends Possession {
                 .filter(d -> d.getDayOfMonth() == dateOperation)
                 .count();
     var valeurFutur = argent.getValeurComptable() + fluxMensuel * nbOperations;
-    var argentFutur =
-        new Argent(
-            argent.nom + " réduit au financement de " + this, tFutur, valeurFutur, argent.devise);
+    Argent argentFutur;
+    if (argent instanceof Dette) {
+      argentFutur = new Dette(
+              argent.getNom() + " réduit au financement de " + this,
+              tFutur,
+              Math.min(0, valeurFutur),
+              argent.getDevise()
+      );
+    } else {
+      argentFutur = new Argent(
+              argent.getNom() + " réduit au financement de " + this,
+              tFutur,
+              valeurFutur,
+              argent.getDevise()
+      );
+    }
     return new FluxArgent(
         nom, argentFutur, debut, tFuturMajoréParFin, fluxMensuel, dateOperation, devise);
   }
